@@ -71,6 +71,7 @@ if (type == "allrawexd")
                 // Save
                 if (currentCount % 100 == 1)
                     Console.WriteLine($"[{currentCount}/{total}] Processing: {name} - Language: {lang.GetSuffix()}");
+                sheet.Collection.ActiveLanguage = lang;
                 ExdHelper.SaveAsCsv(sheet, lang, target.FullName, true);
                 ++successCount;
             }
