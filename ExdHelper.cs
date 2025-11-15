@@ -22,6 +22,7 @@ namespace DumpCsv
             {
                 var indexLine = new StringBuilder("key");
                 var nameLine = new StringBuilder("#");
+                var offsetLine = new StringBuilder("offset");
                 var typeLine = new StringBuilder("int32");
 
                 var colIndices = new List<int>();
@@ -29,6 +30,7 @@ namespace DumpCsv
                 {
                     indexLine.AppendFormat(",{0}", col.Index);
                     nameLine.AppendFormat(",{0}", col.Name);
+                    offsetLine.AppendFormat(",{0}", col.Offset);
                     typeLine.AppendFormat(",{0}", col.ValueType);
 
                     colIndices.Add(col.Index);
@@ -36,6 +38,7 @@ namespace DumpCsv
 
                 s.WriteLine(indexLine);
                 s.WriteLine(nameLine);
+                s.WriteLine(offsetLine);
                 s.WriteLine(typeLine);
 
                 ExdHelper.WriteRows(s, sheet, language, colIndices, writeRaw);
