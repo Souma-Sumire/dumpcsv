@@ -4,7 +4,7 @@ using SaintCoinach.Ex;
 
 if (args.Length < 3)
 {
-    Console.WriteLine("usage: dumpcsv path-to-game lang rawedx|allrawexd <out-path>");
+    Console.WriteLine("usage: dumpcsv path-to-game lang rawexd|allrawexd <out-path>");
     return 0;
 }
 
@@ -38,7 +38,7 @@ if (string.IsNullOrEmpty(outPath))
 
 if (type == "allrawexd")
 {
-    const string CsvFileFormat = "raw-exd-all/{0}{1}.csv";
+    const string CsvFileFormat = "{0}{1}.csv";
 
     var filesToExport = realm.GameData.AvailableSheets;
 
@@ -88,7 +88,7 @@ if (type == "allrawexd")
 }
 else if (type == "rawexd")
 {
-    const string CsvFileFormat = "rawexd/{0}.csv";
+    const string CsvFileFormat = "{0}.csv";
     var filesToExport = realm.GameData.AvailableSheets;
 
     var successCount = 0;
