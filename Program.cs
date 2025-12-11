@@ -21,6 +21,7 @@ var realm = new ARealmReversed(
     inputLang == "ja" ? SaintCoinach.Ex.Language.Japanese :
         inputLang == "en" ? SaintCoinach.Ex.Language.English :
         inputLang == "chs" ? SaintCoinach.Ex.Language.ChineseSimplified : 
+        inputLang == "tc" ? SaintCoinach.Ex.Language.TraditionalChinese :
         SaintCoinach.Ex.Language.English,
     @"app_data.sqlite"
 );
