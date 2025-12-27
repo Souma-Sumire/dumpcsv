@@ -1,0 +1,40 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Build
+      run: dotnet build -c Release
+
+    - name: Pack
+      run: |
+        $files = @(
+          "bin\Release\net7.0\DumpCsv.deps.json",
+          "bin\Release\net7.0\DumpCsv.dll",
+          "bin\Release\net7.0\DumpCsv.exe",
+          "bin\Release\net7.0\DumpCsv.pdb",
+          "bin\Release\net7.0\DumpCsv.runtimeconfig.json"
+        )
+        Compress-Archive -Path $files -DestinationPath dumpcsv.zip
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dumpcsv.zip
