@@ -37,9 +37,9 @@ jobs:
           "bin\Release\net7.0\DumpCsv.pdb",
           "bin\Release\net7.0\DumpCsv.runtimeconfig.json"
         )
-        Compress-Archive -Path $files -DestinationPath dumpcsv.zip
+        Compress-Archive -Path $files -DestinationPath DumpCsv.zip
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: dumpcsv.zip
+        files: DumpCsv.zip
