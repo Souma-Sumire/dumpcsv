@@ -20,6 +20,11 @@ jobs:
       with:
         dotnet-version: 7.0.x
 
+    - name: Download SaintCoinach
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/Souma-Sumire/SaintCoinach-hexcode/releases/latest/download/SaintCoinach.Cmd.zip" -OutFile "SaintCoinach.Cmd.zip"
+        Expand-Archive -Path "SaintCoinach.Cmd.zip" -DestinationPath "SaintCoinach.Cmd"
+
     - name: Build
       run: dotnet build -c Release
 
